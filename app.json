@@ -8,7 +8,8 @@
     "scheme": "heroui-native-example",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ahmedatri.heroui-native-example"
     },
     "android": {
       "adaptiveIcon": {
@@ -38,12 +39,16 @@
         }
       ],
       "expo-font",
-      "expo-image",
       "expo-web-browser"
     ],
     "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c442a446-939a-4c7a-87af-2bfcd203d356"
+      }
     }
   }
 }

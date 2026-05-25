@@ -1,5 +1,5 @@
 import Feather from '@expo/vector-icons/Feather';
-import { useRouter } from 'expo-router';
+import { type Href, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Card, Chip, cn } from 'heroui-native';
 import type { FC } from 'react';
@@ -35,17 +35,26 @@ type HomeCardProps = {
   imageDark: ImageSourcePropType;
   count: number;
   footer: string;
-  path: string;
+  path: Href;
 };
 
-const cards: HomeCardProps[] = [
+const primaryCard: HomeCardProps = {
+  title: 'Examples',
+  imageLight: HomeComponentsLight,
+  imageDark: HomeComponentsDark,
+  count: 8,
+  footer: 'Play with practical screens',
+  path: '/examples',
+};
+
+const originalCards: HomeCardProps[] = [
   {
     title: 'Components',
     imageLight: HomeComponentsLight,
     imageDark: HomeComponentsDark,
     count: COMPONENTS.length,
     footer: 'Explore all components',
-    path: 'components',
+    path: '/components',
   },
   {
     title: 'Themes',
@@ -53,7 +62,7 @@ const cards: HomeCardProps[] = [
     imageDark: HomeThemesDark,
     count: 4,
     footer: 'Try different themes',
-    path: 'themes',
+    path: '/themes',
   },
   {
     title: 'Showcases',
@@ -61,11 +70,11 @@ const cards: HomeCardProps[] = [
     imageDark: HomeShowcasesDark,
     count: 6,
     footer: 'View components in action',
-    path: 'showcases',
+    path: '/showcases',
   },
 ];
 
-const HomeCard: FC<HomeCardProps & { index: number }> = ({
+export const HomeCard: FC<HomeCardProps & { index: number }> = ({
   title,
   imageLight,
   imageDark,
@@ -157,27 +166,43 @@ const HomeCard: FC<HomeCardProps & { index: number }> = ({
 
 export default function App() {
   const { isDark } = useAppTheme();
+  const router = useRouter();
 
   return (
     <ScreenScrollView>
       <AppText className="text-muted text-base text-center my-4">
-        v1.0.3
+        HeroUI Native learning project
       </AppText>
       <View className="gap-6">
-        {cards.map((card, index) => (
-          <HomeCard
-            key={card.title}
-            title={card.title}
-            imageLight={card.imageLight}
-            imageDark={card.imageDark}
-            count={card.count}
-            footer={card.footer}
-            path={card.path}
-            index={index}
-          />
-        ))}
+        <HomeCard
+          title={primaryCard.title}
+          imageLight={primaryCard.imageLight}
+          imageDark={primaryCard.imageDark}
+          count={primaryCard.count}
+          footer={primaryCard.footer}
+          path={primaryCard.path}
+          index={0}
+        />
+
+        <Pressable
+          onPress={() => router.push('/heroui-original')}
+          className="self-center px-4 py-3 rounded-full bg-surface border border-border"
+        >
+          <View className="flex-row items-center gap-2">
+            <AppText className="text-sm text-muted font-medium">
+              Open original HeroUI example project
+            </AppText>
+            <StyledFeather
+              name="arrow-right"
+              size={15}
+              className="text-muted"
+            />
+          </View>
+        </Pressable>
       </View>
       <StatusBar style={isDark ? 'light' : 'dark'} />
     </ScreenScrollView>
   );
 }
+
+export { originalCards };
