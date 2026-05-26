@@ -152,26 +152,6 @@ export default function Layout() {
         <Stack.Screen name="themes/index" options={{ headerTitle: 'Themes' }} />
         <Stack.Screen name="examples/index" options={{ headerTitle: 'Examples' }} />
         <Stack.Screen
-          name="examples/foundations"
-          options={{ headerTitle: 'Foundations' }}
-        />
-        <Stack.Screen
-          name="examples/inputs"
-          options={{ headerTitle: 'Inputs' }}
-        />
-        <Stack.Screen
-          name="examples/feedback"
-          options={{ headerTitle: 'Feedback' }}
-        />
-        <Stack.Screen
-          name="examples/layout"
-          options={{ headerTitle: 'Layout' }}
-        />
-        <Stack.Screen
-          name="examples/overlays"
-          options={{ headerTitle: 'Overlays' }}
-        />
-        <Stack.Screen
           name="examples/auth-screen"
           options={{ headerTitle: 'Auth Screen' }}
         />
@@ -182,6 +162,14 @@ export default function Layout() {
         <Stack.Screen
           name="examples/paywall-screen"
           options={{ headerTitle: 'Paywall Screen' }}
+        />
+        <Stack.Screen
+          name="examples/users-directory"
+          options={{ headerTitle: 'Users Directory' }}
+        />
+        <Stack.Screen
+          name="examples/notifications-screen"
+          options={{ headerTitle: 'Notifications' }}
         />
         <Stack.Screen
           name="heroui-original"

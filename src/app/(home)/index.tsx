@@ -42,8 +42,8 @@ const primaryCard: HomeCardProps = {
   title: 'Examples',
   imageLight: HomeComponentsLight,
   imageDark: HomeComponentsDark,
-  count: 8,
-  footer: 'Play with practical screens',
+  count: 5,
+  footer: 'Explore realistic app screens',
   path: '/examples',
 };
 
